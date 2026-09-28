@@ -1,0 +1,10 @@
+{
+  "name": "webgl-skeletal-animation",
+  "version": "1.0.0",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "test": "node test/run-tests.mjs && node test/worker-smoke.mjs",
+    "serve": "python3 -m http.server 8080"
+  }
+}

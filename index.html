@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>WebGL 骨骼动画 · 线性混合蒙皮</title>
+  <link rel="stylesheet" href="./css/style.css" />
+</head>
+<body>
+  <canvas id="gl"></canvas>
+
+  <aside id="panel">
+    <h1>骨骼动画 · LBS</h1>
+
+    <section class="hud">
+      <div><span>帧率</span><b id="fps">–</b></div>
+      <div><span>帧时间</span><b id="frametime">–</b></div>
+      <div><span>Worker 耗时</span><b id="simtime">–</b></div>
+      <div><span>长任务</span><b id="longtasks">0</b></div>
+      <div><span>骨骼数</span><b id="bonecount">–</b></div>
+    </section>
+
+    <p id="mode" class="normal">初始化中…</p>
+    <p id="status" class="status">加载中…</p>
+
+    <section class="controls">
+      <label>骨骼数（2–256，上限 64 后降级）
+        <div class="row">
+          <input type="range" id="bones" min="2" max="256" step="1" value="32" />
+          <span id="bones-label">32</span>
+        </div>
+      </label>
+
+      <label>动画 A
+        <select id="clipA">
+          <option value="wave" selected>wave（波动）</option>
+          <option value="twist">twist（扭转）</option>
+          <option value="idle">idle（待机）</option>
+        </select>
+      </label>
+      <label>动画 B
+        <select id="clipB">
+          <option value="wave">wave（波动）</option>
+          <option value="twist" selected>twist（扭转）</option>
+          <option value="idle">idle（待机）</option>
+        </select>
+      </label>
+
+      <label>混合 A→B
+        <div class="row">
+          <input type="range" id="blend" min="0" max="1" step="0.01" value="0" />
+          <span id="blend-label">0.00</span>
+        </div>
+      </label>
+
+      <label>播放速度
+        <div class="row">
+          <input type="range" id="speed" min="0" max="3" step="0.05" value="1" />
+          <span id="speed-label">1.00</span>
+        </div>
+      </label>
+
+      <label class="check">
+        <input type="checkbox" id="ik" /> 启用 IK（CCD，Shift/右键拖动红点）
+      </label>
+      <label id="ikweight-row" style="display:none">IK 权重
+        <div class="row">
+          <input type="range" id="ikweight" min="0" max="1" step="0.01" value="1" />
+          <span id="ikweight-label">1.00</span>
+        </div>
+      </label>
+
+      <label class="check">
+        <input type="checkbox" id="showbones" checked /> 显示骨骼线
+      </label>
+    </section>
+
+    <p class="hint">左键拖动旋转 · 滚轮缩放 · Shift/右键拖动 IK 目标</p>
+  </aside>
+
+  <script type="module" src="./js/main.js"></script>
+</body>
+</html>
